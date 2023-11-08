@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"></head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        <% tasks.forEach(function(task) { %>
+            <li>
+                <strong><%= task.title %></strong>
+                <p><%= task.description %></p>
+                <p>Status: <%= task.status %></p>
+                <a href="/tasks/<%= task._id %>/edit">Edit</a>
+                <form action="/tasks/<%= task._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+    <a href="/tasks/new">Create New Task</a>
+</body>
+</html>
